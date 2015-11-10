@@ -10,7 +10,7 @@ RSpec.feature "User signs in" do
     click_link "Log In"
     fill_in "Email", with: @john.email
     fill_in "Password", with: @john.password
-    click_button "Log in"
+    click_button "Log In"
 
     expect(page).to have_content("You are now signed in.")
     expect(page).to have_content("Signed in as #{@john.email}")

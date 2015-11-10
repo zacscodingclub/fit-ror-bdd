@@ -8,7 +8,7 @@ RSpec.feature "Signing out signed-in users" do
     click_link "Log In"
     fill_in "Email", with: @john.email
     fill_in "Password", with: @john.password
-    click_button "Log in"
+    click_button "Log In"
   end
 
   scenario do
