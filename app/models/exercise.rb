@@ -5,4 +5,5 @@ class Exercise < ActiveRecord::Base
   validates :work_sets, presence: true
   validates :details, presence: true
   validates :workout_date, presence: true
+  validates :user_id, presence: true
 end

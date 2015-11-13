@@ -17,7 +17,7 @@ class ExercisesController < ApplicationController
       flash[:success] = "Your workout was added."
       redirect_to user_exercise_path(current_user, @exercise)
     else
-      flash[:danger] = "An error occurred, please try submitting your workout again."
+      flash[:danger] = "Workout couldn't be added.  Please try submitting it again."
       render :new
     end
   end

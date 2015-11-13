@@ -36,10 +36,10 @@ RSpec.feature "Creating Exercise" do
     fill_in "Date", with: ""
     click_button "Add Workout"
 
-    expect(page).to have_content("Workout can't be added")
-    expect(page).to have_content("Exercise can't be blank")
-    expect(page).to have_content("Work Sets can't be blank")
+    expect(page).to have_content("Workout couldn't be added.  Please try submitting it again.")
+    expect(page).to have_content("Name can't be blank")
+    expect(page).to have_content("Work sets can't be blank")
     expect(page).to have_content("Details can't be blank")
-    expect(page).to have_content("Date can't be blank")
+    expect(page).to have_content("Workout date can't be blank")
   end
 end
