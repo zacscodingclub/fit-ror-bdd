@@ -7,8 +7,7 @@ RSpec.feature "Creating Exercise" do
   end
 
   scenario "with valid inputs" do
-    visit "/"
-
+    visit '/'
     click_link "The Gym"
     click_link "Add Workout"
     expect(page).to have_link("Back")
@@ -23,5 +22,24 @@ RSpec.feature "Creating Exercise" do
 
     exercise = Exercise.last
     expect(page.current_path).to eq(user_exercise_path(@john, exercise))
+  end
+
+  scenario "with invalid inputs" do
+    visit '/'
+    click_link "The Gym"
+    click_link "Add Workout"
+
+    expect(page).to have_link("Back")
+
+    fill_in "Exercise", with: nil
+    fill_in "Work Sets", with: ""
+    fill_in "Date", with: ""
+    click_button "Add Workout"
+
+    expect(page).to have_content("Workout can't be added")
+    expect(page).to have_content("Exercise can't be blank")
+    expect(page).to have_content("Work Sets can't be blank")
+    expect(page).to have_content("Details can't be blank")
+    expect(page).to have_content("Date can't be blank")
   end
 end
