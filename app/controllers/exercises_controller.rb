@@ -35,6 +35,12 @@ class ExercisesController < ApplicationController
     end
   end
 
+  def destroy
+    @exercise.destroy
+    flash[:success] = "Exercise was deleted"
+    redirect_to user_exercises_path(current_user)
+  end
+
   private
     def exercise_params
       params.require(:exercise).permit(:name, :work_sets, :details, :workout_date)
