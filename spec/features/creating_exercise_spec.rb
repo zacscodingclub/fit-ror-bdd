@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.feature "Creating Exercise" do
   before do
-    @john = User.create(email: "john@example.com", password: "password")
+    @john = User.create(email: "john@example.com", password: "password", first_name: "John", last_name: "Password")
     login_as(@john)
   end
 
@@ -11,6 +11,7 @@ RSpec.feature "Creating Exercise" do
     click_link "The Gym"
     click_link "Add Workout"
     expect(page).to have_link("Back")
+    expect(page).to have_content("New Workout for #{@john.first_name} #{@john.last_name}")
 
     fill_in "Exercise", with: "Snatch"
     fill_in "Work Sets", with: "10x1x90kg"
