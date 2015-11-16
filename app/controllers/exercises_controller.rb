@@ -22,6 +22,19 @@ class ExercisesController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    if @exercise.update(exercise_params)
+      flash[:success] = "Your workout was updated"
+      redirect_to user_exercise_path(current_user, @exercise)
+    else
+      flash[:danger] = "Your workout couldn't be updated"
+      redirect_to edit_user_exercise_path(current_user, @exercise)
+    end
+  end
+
   private
     def exercise_params
       params.require(:exercise).permit(:name, :work_sets, :details, :workout_date)

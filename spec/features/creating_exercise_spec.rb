@@ -16,7 +16,7 @@ RSpec.feature "Creating Exercise" do
     fill_in "Exercise", with: "Snatch"
     fill_in "Work Sets", with: "10x1x90kg"
     fill_in "Details", with: "EMOM, no misses"
-    fill_in "Date", with: "2015-11-12"
+    fill_in "Date", with: Time.now
     click_button "Add Workout"
 
     expect(page).to have_content("Your workout was added.")
