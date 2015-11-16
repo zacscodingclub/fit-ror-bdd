@@ -3,6 +3,12 @@ Rails.application.routes.draw do
 
   root to: 'dashboard#index'
 
+  resource :dashboard, only: [:index] do
+    collection do
+      post :search, to: 'dashboard#search'
+    end
+  end
+
   resources :users do
     resources :exercises
   end

@@ -11,8 +11,6 @@ class Exercise < ActiveRecord::Base
 
   default_scope { where('workout_date > ?', 7.days.ago).order(created_at: :desc) }
 
-  self.per_page = 4
-
   def top_set
     return work_sets.split("x")[2]
   end
