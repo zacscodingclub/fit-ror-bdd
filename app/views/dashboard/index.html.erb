@@ -9,7 +9,13 @@
     <br>
     <ul>
       <% @users.each do |user| %>
-        <li class="well text-center"><%= user.full_name %></li>
+        <li class="well text-center">
+          <%= user.full_name %>
+          <% if current_user %>
+            <%= link_to "Follow", friendships_path(friend_id: user.id), method: :post,
+                        class: "btn btn-primary pull-right" unless current_user.follows_or_same?(user) %> 
+          <% end %>
+        </li>
       <% end %>
     </ul>
     <div class="text-center">
