@@ -2,8 +2,13 @@
 
 <div class="row search-result">
   <% @users.each do |user| %>
-    <div class="col-md-10 col-md-offset-2 well member">
+    <div class="col-md-6 col-md-offset-3 well member">
       <%= user.full_name %>
+
+      <% if current_user %>
+        <%= link_to "Follow", friendships_path(friend_id: user.id), method: :post,
+                        class: "btn btn-primary pull-right" unless current_user.follows_or_same?(user) %> 
+      <% end %>
     </div>
   <% end %>
 </div>
