@@ -38,3 +38,22 @@
 
   <%= content_tag :div, "", id: "chart", data: {workouts: @exercises}, style: "height:250px" %>
 </div>
+
+<div class="col-md-4 col-xs-12">
+  <h1 class="text-center">My Friends</h1>
+  <table class="table table-striped">
+    <thead>
+      <th>User</th>
+      <th></th>
+    </thead>
+    <tbody>
+      <% @friends.each do |friend| %>
+        <tr>
+          <td><%= link_to friend.full_name, friendship_path(current_user.current_friendship(friend)) %></td>
+          <td><%= link_to "Unfollow", friendship_path(current_user.current_friendship(friend)), method: :delete,
+                        class: "btn btn-primary pull-right", data: {confirm: "Are you sure?"} %> </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
